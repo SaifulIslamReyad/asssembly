@@ -1,0 +1,75 @@
+.MODEL SMALL
+.STACK 100H
+.DATA     
+    MSG1 DB "Enter a 3-digit number: $"
+    MSG2 DB "You entered: $"
+    
+    DIGIT1 DB ?
+    DIGIT2 DB ?
+    DIGIT3 DB ?
+
+.CODE      
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+; PRINT MESSAGE 1
+    MOV DX, OFFSET MSG1
+    MOV AH, 9
+    INT 21H
+
+; READ FIRST DIGIT
+    MOV AH, 1
+    INT 21H
+    MOV DIGIT1, AL  ; Store first digit
+
+; READ SECOND DIGIT
+    MOV AH, 1
+    INT 21H
+    MOV DIGIT2, AL  ; Store second digit
+
+; READ THIRD DIGIT
+    MOV AH, 1
+    INT 21H
+    MOV DIGIT3, AL  ; Store third digit
+
+; PRINT NEW LINE
+    MOV DL, 10
+    MOV AH, 2
+    INT 21H
+    MOV DL, 13
+    INT 21H
+
+; PRINT MESSAGE 2
+    MOV DX, OFFSET MSG2
+    MOV AH, 9
+    INT 21H
+
+; PRINT NEW LINE
+    MOV DL, 10
+    MOV AH, 2
+    INT 21H
+    MOV DL, 13
+    INT 21H
+
+; OUTPUT FIRST DIGIT
+    MOV DL, DIGIT1
+    MOV AH, 2
+    INT 21H
+
+; OUTPUT SECOND DIGIT
+    MOV DL, DIGIT2
+    MOV AH, 2
+    INT 21H
+
+; OUTPUT THIRD DIGIT
+    MOV DL, DIGIT3
+    MOV AH, 2
+    INT 21H
+
+; EXIT PROGRAM
+    MOV AX, 4C00H
+    INT 21H
+    
+MAIN ENDP
+END MAIN

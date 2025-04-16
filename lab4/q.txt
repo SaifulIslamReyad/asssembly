@@ -1,0 +1,7 @@
+Adding a number to all values of the array
+Finding even odd from the array
+Adding every alternative number of an array
+Adding two array values of similar positions and storing them in a new array
+Reverse an array
+Finding maximum or minimum 
+Search a number
